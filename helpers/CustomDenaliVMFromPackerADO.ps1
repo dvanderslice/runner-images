@@ -42,7 +42,7 @@ Function CreateAzureVMFromPackerTemplate {
         [Parameter(Mandatory = $True)]
         [string] $AdminUsername,
         [Parameter(Mandatory = $True)]
-        [SecureString] $AdminPassword,
+        [String] $AdminPassword,
         [Parameter(Mandatory = $True)]
         [string] $AzureLocation,
         [Parameter(Mandatory = $True)]
