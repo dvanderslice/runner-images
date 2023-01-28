@@ -30,16 +30,35 @@ Function CreateAzureVMFromPackerTemplate {
         .EXAMPLE
             CreateAzureVMFromPackerTemplate -SubscriptionId {YourSubscriptionId}  -ResourceGroupName {ResourceGroupName} -TemplateFile "C:\BuildVmImages\temporaryTemplate.json" -VirtualMachineName "testvm1" -AdminUsername "shady1" -AdminPassword "SomeSecurePassword1" -AzureLocation "eastus"
     #>
-    $vmSize = "Standard_DS2_v2"
-    $AzureLocation = 'southcentralus'
+    param (
+        [Parameter(Mandatory = $True)]
+        [string] $SubscriptionId,
+        [Parameter(Mandatory = $True)]
+        [string] $ResourceGroupName,
+        [Parameter(Mandatory = $True)]
+        [string] $TemplateFilePath,
+        [Parameter(Mandatory = $True)]
+        [string] $VirtualMachineName,
+        [Parameter(Mandatory = $True)]
+        [string] $AdminUsername,
+        [Parameter(Mandatory = $True)]
+        [SecureString] $AdminPassword,
+        [Parameter(Mandatory = $True)]
+        [string] $AzureLocation,
+        [Parameter(Mandatory = $True)]
+        [string] $vmSize,
+        [Parameter(Mandatory = $True)]
+        [string] $vnetName,
+        [Parameter(Mandatory = $True)]
+        [string] $subnetName,
+        [Parameter(Mandatory = $True)]
+        [string] $vnetresourcegroupname
+        
+
+    )
+
     $guid = [System.GUID]::NewGuid().ToString().ToUpper()
-    $vnetName = "South-Internal-Network-VNET"
-    $subnetName = "South-Application-Subnet"
-    $ResourceGroupName = 'South-Devops-RG'
-    $vnetresourcegroupname = 'South-Networking-RG'
     $nicName = $VirtualMachineName
-    $AdminUsername = 'ADOAdmin'
-    $AdminPassword = 'ADO2022****'
     
     $VNET = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetresourcegroupname
     $subnetid = $vnet.subnets[6].id
