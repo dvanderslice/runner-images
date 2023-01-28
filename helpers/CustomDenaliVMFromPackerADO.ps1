@@ -38,8 +38,8 @@ Function CreateAzureVMFromPackerTemplate {
     $ResourceGroupName = 'South-Devops-RG'
     $vnetresourcegroupname = 'South-Networking-RG'
     $nicName = $VirtualMachineName
-    $AdminUsername = 'Denaliadmin'
-    $AdminPassword = 'Denali2022****'
+    $AdminUsername = 'ADOAdmin'
+    $AdminPassword = 'ADO2022****'
     
     $VNET = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetresourcegroupname
     $subnetid = $vnet.subnets[6].id
