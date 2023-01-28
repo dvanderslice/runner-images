@@ -55,6 +55,7 @@
             "virtual_network_subnet_name": "{{user `virtual_network_subnet_name`}}",
             "private_virtual_network_with_public_ip": "{{user `private_virtual_network_with_public_ip`}}",
             "allowed_inbound_ip_addresses": "{{user `allowed_inbound_ip_addresses`}}",
+             "azure_tags": { "ExcludeMdeAutoProvisioning": "True" },
             "os_type": "Windows",
             "image_publisher": "MicrosoftWindowsServer",
             "image_offer": "WindowsServer",
