@@ -63,7 +63,7 @@ Function CreateAzureVMFromPackerTemplate {
     $VNET = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetresourcegroupname
     $subnetid = $vnet.subnets[6].id
 
-    $nic = New-Aznetworkinterface -name $VirtualMachineName -ResourceGroupName $ResourceGroupName -Location $azurelocation -subnetid $subnetid |ConvertFrom-Json
+    #$nic = New-Aznetworkinterface -name $VirtualMachineName -ResourceGroupName $ResourceGroupName -Location $azurelocation -subnetid $subnetid |ConvertFrom-Json
     ($nic = az network nic create -g $ResourceGroupName -l $AzureLocation -n $nicName --subnet $subnetId -o json)
     $networkId = ($nic | ConvertFrom-Json).NewNIC.id
 
